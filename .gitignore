@@ -1,0 +1,16 @@
+## User settings
+xcuserdata/
+
+# Swift Package Manager
+#
+Packages/
+Package.pins
+Package.resolved
+.swiftpm
+
+.build/
+
+# CocoaPods
+#
+Pods/
+
