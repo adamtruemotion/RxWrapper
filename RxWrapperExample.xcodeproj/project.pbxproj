@@ -35,6 +35,9 @@
 		E0E426EE2464B6240048FD3A /* TodoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E426ED2464B6240048FD3A /* TodoItemViewModel.swift */; };
 		E0E426F02464BADD0048FD3A /* NetworkServiceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E426EF2464BADD0048FD3A /* NetworkServiceWrapper.swift */; };
 		E0E426F22464BEF50048FD3A /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E426F12464BEF50048FD3A /* MulticastDelegate.swift */; };
+		E0E426F4246565700048FD3A /* TodoRepositoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E426F3246565700048FD3A /* TodoRepositoryAdapter.swift */; };
+		E0E426F624656BEC0048FD3A /* ViewModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E426F524656BEC0048FD3A /* ViewModel2.swift */; };
+		E0E426F82465AE3C0048FD3A /* ListViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E426F72465AE3C0048FD3A /* ListViewController2.swift */; };
 		E1F26E05D41B9D3DCA0A3F92 /* Pods_RxWrapperExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76252D2E09FE792C4D8013D /* Pods_RxWrapperExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +121,9 @@
 		E0E426ED2464B6240048FD3A /* TodoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemViewModel.swift; sourceTree = "<group>"; };
 		E0E426EF2464BADD0048FD3A /* NetworkServiceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceWrapper.swift; sourceTree = "<group>"; };
 		E0E426F12464BEF50048FD3A /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		E0E426F3246565700048FD3A /* TodoRepositoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepositoryAdapter.swift; sourceTree = "<group>"; };
+		E0E426F524656BEC0048FD3A /* ViewModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel2.swift; sourceTree = "<group>"; };
+		E0E426F72465AE3C0048FD3A /* ListViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController2.swift; sourceTree = "<group>"; };
 		F919AAA02BA51E93A2A02E35 /* Pods-TrueMotionCommon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrueMotionCommon.release.xcconfig"; path = "Target Support Files/Pods-TrueMotionCommon/Pods-TrueMotionCommon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,9 +223,11 @@
 				E0E4267A246435360048FD3A /* Info.plist */,
 				E0E426D9246456820048FD3A /* ReactiveViewModel.swift */,
 				E0E426DB246456AF0048FD3A /* ViewModel.swift */,
+				E0E426F524656BEC0048FD3A /* ViewModel2.swift */,
 				E0E426ED2464B6240048FD3A /* TodoItemViewModel.swift */,
 				E0E426E72464A25B0048FD3A /* ReactiveListViewController.swift */,
 				E0E426E92464A2B10048FD3A /* ListViewController.swift */,
+				E0E426F72465AE3C0048FD3A /* ListViewController2.swift */,
 			);
 			path = RxWrapperExample;
 			sourceTree = "<group>";
@@ -255,6 +263,7 @@
 				E0E426EB2464B0490048FD3A /* TodoRepositoryWrapper.swift */,
 				E0E426B8246443540048FD3A /* TrueMotionCommon.h */,
 				E0E426E1246463DE0048FD3A /* TMCommon.swift */,
+				E0E426F3246565700048FD3A /* TodoRepositoryAdapter.swift */,
 				E0E426B9246443540048FD3A /* Info.plist */,
 			);
 			path = TrueMotionCommon;
@@ -542,7 +551,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0E426DA246456830048FD3A /* ReactiveViewModel.swift in Sources */,
+				E0E426F624656BEC0048FD3A /* ViewModel2.swift in Sources */,
 				E0E426712464352F0048FD3A /* ViewController.swift in Sources */,
+				E0E426F82465AE3C0048FD3A /* ListViewController2.swift in Sources */,
 				E0E426EA2464A2B10048FD3A /* ListViewController.swift in Sources */,
 				E0E426E82464A25B0048FD3A /* ReactiveListViewController.swift in Sources */,
 				E0E426DC246456AF0048FD3A /* ViewModel.swift in Sources */,
@@ -574,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0E426F4246565700048FD3A /* TodoRepositoryAdapter.swift in Sources */,
 				E0E426DE24645EA70048FD3A /* TodoReponseModel.swift in Sources */,
 				E0E426E0246461160048FD3A /* TodoRepository.swift in Sources */,
 				E0E426E4246464CC0048FD3A /* TodoModel.swift in Sources */,

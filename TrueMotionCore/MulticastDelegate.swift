@@ -1,4 +1,4 @@
-open class MulticastDelegate <T> {
+open class MulticastDelegateImpl <T>: MulticastDelegate {
     private let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
 
     public init() {}
@@ -8,7 +8,7 @@ open class MulticastDelegate <T> {
     }
 
     public func remove(delegate: T) {
-        for oneDelegate in delegates.allObjects.reversed() {
+        for oneDelegate in delegates.allObjects {
             if oneDelegate === delegate as AnyObject {
                 delegates.remove(oneDelegate)
             }
@@ -16,13 +16,14 @@ open class MulticastDelegate <T> {
     }
 
     public func invoke(invocation: (T) -> ()) {
-        for delegate in delegates.allObjects.reversed() {
+        // TODO: order
+        for delegate in delegates.allObjects {
             invocation(delegate as! T)
         }
     }
 }
 
-public protocol MulticastDelegateProtocol {
+public protocol MulticastDelegate {
     associatedtype T
     func add(delegate: T)
     func remove(delegate: T)

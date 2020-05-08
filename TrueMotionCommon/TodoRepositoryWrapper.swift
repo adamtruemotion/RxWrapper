@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import TrueMotionCore
 
-public protocol TodoRepositoryWrapper: class, MulticastDelegateProtocol {
+public protocol TodoRepositoryWrapper: class, MulticastDelegate where T == TodoRepositoryWrapperDelegate {
     func refresh(userId: Int, completionHandler: ((Result<Void, Error>) -> Void)?)
 }
 
@@ -10,7 +10,7 @@ public protocol TodoRepositoryWrapperDelegate: class {
     func todoListChanged(list: [TodoModel])
 }
 
-public class TodoRepositoryWrapperImpl: MulticastDelegate<TodoRepositoryWrapperDelegate>, TodoRepositoryWrapper {
+public class TodoRepositoryWrapperImpl: MulticastDelegateImpl<TodoRepositoryWrapperDelegate>, TodoRepositoryWrapper {
 
     private let repository: TodoRepository
     private let disposeBag = DisposeBag()
