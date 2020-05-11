@@ -6,7 +6,6 @@ class ReactiveViewModel {
 
     let todoList: Observable<[TodoItemViewModel]>
     private let repository: TodoRepository
-    private let disposeBag = DisposeBag()
 
     init(repository: TodoRepository) {
         self.repository = repository
@@ -17,8 +16,8 @@ class ReactiveViewModel {
         }.observeOn(MainScheduler.instance)
     }
 
-    func refresh() {
-        repository.refresh(userId: 1).subscribe().disposed(by: disposeBag)
+    func refresh() -> Completable {
+        return repository.refresh(userId: 1).observeOn(MainScheduler.instance)
     }
 }
 

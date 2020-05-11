@@ -14,21 +14,32 @@ public class TodoRepositoryWrapperImpl: MulticastDelegateImpl<TodoRepositoryWrap
 
     private let repository: TodoRepository
     private let disposeBag = DisposeBag()
+    private var timer: Timer?
 
     init(repository: TodoRepository) {
         self.repository = repository
         super.init()
+        print("RW init")
         repository.todoList.subscribe(onNext: {[weak self] list in
+            print("RW list onNext")
             self?.invoke(invocation: { delegate in
                 delegate.todoListChanged(list: list)
             })
-        }).disposed(by: disposeBag)
+        },
+      onError: {_ in
+          print("RW list error")
+      }).disposed(by: disposeBag)
     }
 
+    deinit {
+        print("RW deinit")
+    }
     public func refresh(userId: Int, completionHandler: ((Result<Void, Error>) -> Void)?) {
         repository.refresh(userId: userId).subscribe(onCompleted: {
+            print("RW refresh on completed")
             completionHandler?(.success(()))
         }) { (error) in
+            print("RW refresh error")
             completionHandler?(.failure(error))
         }.disposed(by: disposeBag)
     }

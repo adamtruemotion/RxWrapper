@@ -24,12 +24,14 @@ class ViewModel {
     }
 
     deinit {
+        print("VM deinit")
         repository.remove(delegate: self)
     }
 
     func refresh() {
         repository.refresh(userId: 1) {[weak self] (result) in
             if case let Result.failure(error) = result {
+                print("VM refresh error")
                 DispatchQueue.main.async {[weak self] in
                     self?.delegate?.error(message: error.localizedDescription)
                 }
@@ -40,6 +42,7 @@ class ViewModel {
 
 extension ViewModel: TodoRepositoryWrapperDelegate {
     func todoListChanged(list: [TodoModel]) {
+        print("VM todo list change")
         self.todoList = list.map { TodoItemViewModel(title: $0.title) }
     }
 }

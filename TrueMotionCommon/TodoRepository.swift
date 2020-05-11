@@ -12,6 +12,9 @@ class TodoRepositoryImpl: TodoRepository {
     lazy private(set) var todoList: Observable<[TodoModel]> = todoListSubject.asObservable()
     private let todoListSubject = BehaviorSubject<[TodoModel]>(value: [])
     private let networkService: NetworkService = TMCore.networkService
+
+    private var timer: Timer?
+    private let disposeBag = DisposeBag()
     
     func refresh(userId: Int) -> Completable {
         let request: Single<[TodoModel]> = networkService.request(
@@ -25,7 +28,10 @@ class TodoRepositoryImpl: TodoRepository {
             }
         }
         .do(onSuccess: {[weak self] in
+            print("Repository onSuccess side effect")
             self?.todoListSubject.onNext($0)
+        }, onError: {_ in
+            print("Repository onError side effect")
         })
         return request.asCompletable()
     }

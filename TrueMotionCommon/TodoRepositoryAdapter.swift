@@ -11,20 +11,31 @@ class TodoRepositoryAdapterImpl: TodoRepositoryAdapter {
     var todoListChanged: (([TodoModel]) -> Void)?
     var disposeBag = DisposeBag()
     let repository: TodoRepository
+    let name: String
 
-    init(repository: TodoRepository) {
+    init(repository: TodoRepository, name: String) {
         self.repository = repository
-        repository.todoList.subscribe(onNext: {[weak self] list in
-            self?.todoListChanged?(list.map { TodoModel(id: $0.id, title: $0.title, completed: $0.completed) })
+        self.name = name
+        repository.todoList.subscribe(onNext: {[unowned self] list in
+            print("\(self.name) list onNext")
+            self.todoListChanged?(list.map { TodoModel(id: $0.id, title: $0.title, completed: $0.completed) })
+        },
+        onError: {[unowned self] _ in
+            print("\(self.name) list error")
         }).disposed(by: disposeBag)
     }
-    
+
+    deinit {
+         print("\(self.name) deinit")
+    }
     func refresh(userId: Int, completionHandler: ((Result<Void, Error>) -> Void)?) {
-        repository.refresh(userId: userId).subscribe(onCompleted: {
+        repository.refresh(userId: userId).subscribe(onCompleted: {[unowned self] in
+            print("\(self.name) refresh completion")
             completionHandler?(.success(()))
-        }) { (error) in
+        }, onError: { error in
+            print("\(self.name) refresh failure")
             completionHandler?(.failure(error))
-        }.disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
     }
     
 }

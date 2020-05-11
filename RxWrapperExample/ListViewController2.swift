@@ -8,18 +8,21 @@ class ListViewController2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ViewModel2(repository: TMCommon.getRepositoryAdapter())
+        print("VC2 viewDidLoad")
+        viewModel = ViewModel2(repository: TMCommon.getRepositoryAdapter(name: "RA1"), repository2: TMCommon.getRepositoryAdapter(name: "RA2"))
         tableView.dataSource = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("VC2 viewWillAppear")
         viewModel.delegate = self
         viewModel.refresh()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        print("VC2 viewDidDisappear")
         viewModel.delegate = nil
     }
 }
